@@ -15,7 +15,7 @@ int main(int argc, char const *argv[])
     cdacmq_attr.mq_msgsize = 128;  //maximum message size
     cdacmq_attr.mq_curmsgs = 0;   //number of message currently queued
 
-    cdacmq = mq_open("/cdacmq", O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR, &cdacmq_attr);
+    cdacmq = mq_open("/cdacmq", O_RDONLY | O_CREAT, S_IRUSR | S_IWUSR, &cdacmq_attr);
 
     mq_receive(cdacmq, buff, 128, &msg_prio);
     printf("Received msg: %s\nMsg prio: %d\n", buff, msg_prio);
